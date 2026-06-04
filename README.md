@@ -25,18 +25,31 @@ Each D flip-flop in the circuit has a Data (D) input, a Clock (CLK) input, and a
 
 **Procedure**
 
-/* write all the steps invloved */
+1.Open Quartus Prime software and create a new project. 2.Select the appropriate project location, project name, and target device for the FPGA. 3.Create a new Verilog HDL file and enter the SISO Shift Register program. 4.Save the file with the .v extension and add it to the project. 5.Compile the design using the Start Compilation option in Quartus Prime. 6.Verify that the compilation is successful without any errors. 7.Open the RTL Viewer to observe the RTL schematic of the 4-bit SISO Shift Register. 8.Create a simulation waveform file to test the functionality of the circuit. 9.Apply clock pulses and serial input data (sin) in the waveform editor. 10.Run functional simulation and observe the output waveform. 11.Verify that the input data shifts one bit at a time from q[0] to q[3] on every positive edge of the clock pulse. 12.Compare the obtained waveform with the expected timing diagram to validate the operation of the SISO Shift Register.
 
 **PROGRAM**
+```module DE4(clk, sin, q);
+input clk;
+input sin;
+output [3:0] q;
+reg [3:0] q;
+always @(posedge clk)
+begin
+q[0] <= sin;
+q[1] <= q[0];
+q[2] <= q[1];
+q[3] <= q[2];
+end
+endmodule
+```
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming.
-
-Developed by: RegisterNumber:
-
-*/
+Developed by:Praveen S RegisterNumber:212225040314
 
 **RTL LOGIC FOR SISO Shift Register**
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/9c21f9be-00e4-438b-8777-4b47a7e460b9" />
 
 **TIMING DIGRAMS FOR SISO Shift Register**
+<img width="1915" height="1072" alt="image" src="https://github.com/user-attachments/assets/80d0e39d-e8b4-48ca-95f4-f229fab1fe81" />
 
 **RESULTS**
+Thus, the Serial-In Serial-Out (SISO) Shift Register was successfully implemented using Verilog HDL and its functionality was verified using RTL schematic and timing simulation waveforms in Quartus Prime.
